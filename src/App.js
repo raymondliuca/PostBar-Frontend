@@ -83,9 +83,39 @@ export default class App extends Component {
   }
 
   render() {
+    const {isAuth} = this.state
     return (
       <div>
-        <PostList />
+        <Router>
+        <nav>
+            <div>
+            {isAuth ? (
+              <div>
+                {this.state.user ? "Welcome " + this.state.user.user.name : null} {" "}
+                <Link to="/">Home</Link> {" "}
+                <Link to="/logout" onClick={this.logoutHandler}>Logout</Link>
+              </div>
+            ) : (
+              <div>
+                  <Link to="/">Home</Link> {" "}
+                  <Link to="/signup">Signup</Link> &nbsp;
+                  <Link to="/signin">Signin</Link> &nbsp;
+              </div>
+            )
+            }
+            </div>
+          </nav>
+
+          <div>
+            <Routes>
+              <Route path="/" element={<PostList/>}></Route>
+              <Route path="/signup" element={<Signup register = {this.registerHandler}/>}></Route>
+              <Route path="/signin" element={<Signin login={this.loginHandler}/>}></Route>
+            </Routes>
+          </div>
+
+          </Router>
+
       </div>
     )
   }
