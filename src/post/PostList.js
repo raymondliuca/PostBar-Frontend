@@ -32,11 +32,11 @@ export default class PostList extends Component {
 
     addPost = (post) => {
         Axios.post("post/add", post, 
-        // {
-        //     headers: {
-        //         "Authorization": "Bearer " + localStorage.getItem("token")
-        //     }
-        // }
+        {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        }
         )
         .then((response) => {
             console.log("Post Added successfully!!!")
@@ -50,10 +50,9 @@ export default class PostList extends Component {
 
     render() {
         const allPosts = this.state.posts.map((post, index) => {
-            return <tr key={index}>
-                 <Post {...post} />
-
-             </tr>
+            return <div key={index}>
+                 <Post {...post} user={this.props.user} />
+             </div>
         })
         return (
             <div>
@@ -62,8 +61,9 @@ export default class PostList extends Component {
                     <table>
                         <tbody>
                             <tr>
-                                <th>Name</th>
-                                <th>Email Address</th>
+                                <th>Topic</th>
+                                <th>Title</th>
+                                <th>Author</th>
                             </tr>
                             {allPosts}
                         </tbody>

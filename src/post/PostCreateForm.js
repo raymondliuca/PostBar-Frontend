@@ -24,7 +24,7 @@ export default class PostCreateForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.props.user)
-        this.props.addPost(this.state.newPost, this.props.user)
+        this.props.addPost(this.state.newPost)
     }
 
     render() {
@@ -38,6 +38,7 @@ export default class PostCreateForm extends Component {
               <div>
                 <label>Topic</label>
                 <select type="text" name="topic" onChange={this.handleChange}>
+                <option value="">Select one Topic</option>
                     <option value="GeneralTalk">General Talk</option>
                     <option value="TechnicalCommunication">Technical Communication</option>
                     <option value="CareersWorld">Careers World</option>
