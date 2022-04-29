@@ -7,7 +7,7 @@ export default class PostDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            post: this.props.post
+            post: this.props.post,
          }
     }
     addComment = (post) => {
@@ -41,7 +41,7 @@ export default class PostDetail extends Component {
         })
     }
   render() {
-    const allComments = this.state.post.comments.map((comment) => {
+      const allComments = this.state.post.comments.map((comment) => {
         console.log(comment)
         return <div >
              <Comment comment = {comment}/>
@@ -50,10 +50,18 @@ export default class PostDetail extends Component {
     return (
         
         <div>
+       
+        <div>
+        <h3>{this.props.post.topic} {this.props.post.title}</h3>
+        <h4>{this.props.post.author.firstName} {this.props.post.author.lastName}</h4>
+        <h4>{this.props.post.content}</h4>
+          <div>
+            <button onClick={() => {this.props.editView(this.props.post._id)}}>Edit</button>
+          </div>
           <hr></hr>
-          <h3>{this.props.post.topic} {this.props.post.title}</h3>
-          <h4>{this.props.post.author.firstName} {this.props.post.author.lastName}</h4>
-          <h4>{this.props.post.content}</h4>
+        </div>
+          
+          <hr></hr>
 
           <div>
             {allComments}

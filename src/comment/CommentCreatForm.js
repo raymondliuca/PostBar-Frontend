@@ -42,6 +42,8 @@ export default class CommentCreatForm extends Component {
                   </div>
     
               </form>
+              <br></br>
+           <hr></hr>
             </div>
         )
       }

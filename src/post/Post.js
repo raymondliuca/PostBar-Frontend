@@ -23,17 +23,22 @@ export default class Post extends Component {
         return (
             <> 
               <tr>
-                <td>{this.props.topic}</td> 
+              <td>
+                    <div onClick={this.handleDetailsClick}>
+                        {this.props.topic}
+                    </div>
+                </td>
                 <td>
                     <div onClick={this.handleDetailsClick}>
                         {this.props.title}
                     </div>
                 </td>
-                <td>{this.props.author.firstName} {this.props.author.lastName}</td> 
+                <td>{this.props.author.firstName} {this.props.author.lastName}</td>
+                <td><button onClick={() => {this.props.deletePost(this.props._id)}}>Delete</button></td>
               </tr>
                 <div>
                 {(onDetail) ?  
-                    <PostDetail post={this.props} user={this.props.user} / > :
+                    <PostDetail post={this.props} user={this.props.user} editView={this.props.editView} / > :
                     <></>
                 }
                 </div>

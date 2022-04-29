@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Axios from "axios"
 import Post from './Post'
 import PostCreateForm from './PostCreateForm'
+import PostEditForm from './PostEditForm'
 
 export default class PostList extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class PostList extends Component {
       
         this.state = {
            posts: [],
-           currentUser: "",
+           currenPost: {},
            isEdit: false
         }
     }
@@ -48,10 +49,78 @@ export default class PostList extends Component {
         })
     }
 
+    editView = (id) => {
+        Axios.get(`post/edit?id=${id}`, 
+        {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            console.log("Loaded Post Information!!!")
+            console.log(response.data.post);
+            var post = response.data.post;
+            this.setState({
+                isEdit: true,
+                currentPost: post
+            }, ()=>{
+                console.log(this.state.isEdit)
+            })
+            
+        })
+        .catch(error => {
+            console.log("Error Loading Post Information");
+            console.log(error)
+        })
+    }
+
+    editPost= (post) => {
+        Axios.put("post/update", post, 
+        {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+              console.log("Post Updated!!!");
+              console.log(response);
+              this.setState({
+                isEdit: false,
+            }, ()=>{
+                this.loadPostList();
+                console.log(this.state.isEdit);
+                this.render()
+            })
+        })
+        .catch(error => {
+              console.log("Error Updating Post!!!")
+              console.log(error);
+        })
+      }
+
+    deletePost = (id) => {
+        Axios.delete(`post/delete?id=${id}`, 
+        {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            console.log("Delete Post!!")
+            this.loadPostList();
+        })
+        .catch(error => {
+            console.log("Error Deleting Author!!!")
+            console.log(error);
+        })
+      }
+
     render() {
+        const isEdit = this.state.isEdit
         const allPosts = this.state.posts.map((post, index) => {
             return <div key={index}>
-                 <Post {...post} user={this.props.user} />
+                 <Post {...post} user={this.props.user} 
+                 deletePost={this.deletePost} editView={this.editView}/>
              </div>
         })
         return (
@@ -70,7 +139,11 @@ export default class PostList extends Component {
                     </table>
                 </div>
                 <div>
-                    <PostCreateForm addPost = {this.addPost} user={this.props.user} / >
+                  {(isEdit) ? 
+                  <PostEditForm key={this.state.currentPost._id} post={this.state.currentPost}
+                  editPost={this.editPost}></PostEditForm> :
+                  <PostCreateForm addPost = {this.addPost} user={this.props.user} / >
+                  }
                 </div>
             </div>
         )

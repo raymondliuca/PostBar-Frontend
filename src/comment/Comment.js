@@ -37,6 +37,7 @@ export default class Comment extends Component {
       <div>
          <CommentDetail comment={this.state.comment} 
          firstName={this.state.firstName} lastName={this.state.lastName} / >
+           
       </div>
     )
   }
