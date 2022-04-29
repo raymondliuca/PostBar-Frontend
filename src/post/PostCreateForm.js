@@ -13,18 +13,18 @@ export default class PostCreateForm extends Component {
     handleChange = (event) => {
         const attributeToChange = event.target.name;
         const newValue = event.target.value;
-
         const post = {...this.state.newPost}
         post[attributeToChange] = newValue
-
+        post.author = this.props.user.user
         this.setState({
-            newPost: post
+            newPost: post,
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addPost(this.state.newPost)
+        console.log(this.props.user)
+        this.props.addPost(this.state.newPost, this.props.user)
     }
 
     render() {
@@ -36,18 +36,22 @@ export default class PostCreateForm extends Component {
           <form onSubmit={this.handleSubmit}>
 
               <div>
-                  <lable>Name</lable>
-                  <input name="name" type="text" onChange={this.handleChange}></input>
+                <label>Topic</label>
+                <select type="text" name="topic" onChange={this.handleChange}>
+                    <option value="GeneralTalk">General Talk</option>
+                    <option value="TechnicalCommunication">Technical Communication</option>
+                    <option value="CareersWorld">Careers World</option>
+                </select>
               </div>
 
               <div>
-                  <lable>Email Address</lable>
-                  <input name="emailAddress" type="text" onChange={this.handleChange}></input>
+                  <lable>Title</lable>
+                  <input name="title" type="text" onChange={this.handleChange}></input>
               </div>
 
               <div>
-                  <lable>Phone Number</lable>
-                  <input name="phoneNumber" type="text" onChange={this.handleChange}></input>
+                  <lable>Content</lable>
+                  <textarea name="content" onChange={this.handleChange}></textarea>
               </div>
 
               <div>

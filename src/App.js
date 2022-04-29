@@ -108,7 +108,7 @@ export default class App extends Component {
 
           <div>
             <Routes>
-              <Route path="/" element={<PostList/>}></Route>
+              <Route path="/" element={<PostList user={this.state.user}/>}></Route>
               <Route path="/signup" element={<Signup register = {this.registerHandler}/>}></Route>
               <Route path="/signin" element={<Signin login={this.loginHandler}/>}></Route>
             </Routes>

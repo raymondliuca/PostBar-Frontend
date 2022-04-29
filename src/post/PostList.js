@@ -52,6 +52,7 @@ export default class PostList extends Component {
         const allPosts = this.state.posts.map((post, index) => {
             return <tr key={index}>
                  <Post {...post} />
+
              </tr>
         })
         return (
@@ -69,7 +70,7 @@ export default class PostList extends Component {
                     </table>
                 </div>
                 <div>
-                    <PostCreateForm addPost = {this.addPost} / >
+                    <PostCreateForm addPost = {this.addPost} user={this.props.user} / >
                 </div>
             </div>
         )
