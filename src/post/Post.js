@@ -7,7 +7,7 @@ export default class Post extends Component {
         super(props)
       
         this.state = {
-            onDetail: false
+            onDetail: false,
         }
     }
 
@@ -34,7 +34,11 @@ export default class Post extends Component {
                     </div>
                 </td>
                 <td>{this.props.author.firstName} {this.props.author.lastName}</td>
+                {(this.props.author._id == this.props.user.user.is) ?
                 <td><button onClick={() => {this.props.deletePost(this.props._id)}}>Delete</button></td>
+                : <></>
+                }
+                
               </tr>
                 <div>
                 {(onDetail) ?  

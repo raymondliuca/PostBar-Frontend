@@ -41,8 +41,8 @@ export default class PostDetail extends Component {
         })
     }
   render() {
+      console.log(this.props.user)
       const allComments = this.state.post.comments.map((comment) => {
-        console.log(comment)
         return <div >
              <Comment comment = {comment}/>
          </div>
@@ -56,7 +56,10 @@ export default class PostDetail extends Component {
         <h4>{this.props.post.author.firstName} {this.props.post.author.lastName}</h4>
         <h4>{this.props.post.content}</h4>
           <div>
+            {(this.props.post.author._id == this.props.user.user.is) ? 
             <button onClick={() => {this.props.editView(this.props.post._id)}}>Edit</button>
+            : <></>
+            }
           </div>
           <hr></hr>
         </div>

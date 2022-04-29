@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
 import Axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Alert } from "react-bootstrap"
+import  { Redirect } from 'react-router-dom'
+
 
 export default class App extends Component {
 
