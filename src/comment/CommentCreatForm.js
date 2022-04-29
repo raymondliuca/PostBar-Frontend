@@ -33,12 +33,11 @@ export default class CommentCreatForm extends Component {
               <form onSubmit={this.handleSubmit}>
     
                   <div>
-                      <lable>Content</lable>
-                      <textarea name="content" onChange={this.handleChange}></textarea>
+                      <textarea className='commit' name="content" onChange={this.handleChange}></textarea>
                   </div>
     
                   <div>
-                      <input type="submit" value="Post"></input>
+                      <input type="submit" value="Reply!"></input>
                   </div>
     
               </form>

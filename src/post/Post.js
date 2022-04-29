@@ -22,18 +22,22 @@ export default class Post extends Component {
         const onDetail = this.state.onDetail
         return (
             <> 
-              <tr>
+              <tr className='tr'>
               <td>
-                    <div onClick={this.handleDetailsClick}>
+                    <div onClick={this.handleDetailsClick} className="topic">
                         {this.props.topic}
                     </div>
                 </td>
                 <td>
-                    <div onClick={this.handleDetailsClick}>
+                    <div onClick={this.handleDetailsClick} className="title">
                         {this.props.title}
                     </div>
                 </td>
-                <td>{this.props.author.firstName} {this.props.author.lastName}</td>
+                <td>
+                    <div className='author'>
+                    {this.props.author.firstName} {this.props.author.lastName}
+                    </div> 
+                </td>
                 {(this.props.isAuth && this.props.author._id == this.props.user.user.is) ?
                 <td><button onClick={() => {this.props.deletePost(this.props._id)}}>Delete</button></td>
                 : <></>

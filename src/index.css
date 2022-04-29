@@ -11,3 +11,67 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.left-navbar{
+  color: rgb(7, 20, 20);
+  font-size: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: blue;
+  font-size: 40px;
+}
+
+.bigcontainer {
+  padding: 0 200px 0 200px;
+  text-align: center;
+}
+.topic {
+  text-align: left;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.author {
+  font-size: 14px;
+}
+
+.detailName {
+  text-align: left;
+  font-size: 14px;
+}
+
+.content {
+  text-align: left;
+  font-size: 18px;
+}
+
+.table {
+  text-align: center;
+  margin:auto;
+  width: 70vh;
+}
+
+textarea {
+  width: 400px;
+  height: 150px;
+}
+
+.form {
+  text-align: center;
+}
+
+.titleinput {
+  width: 350px;
+}
+
+.select {
+  font-size: 26px;
+}
+
+.select select {
+  font-size: 26px;
+}

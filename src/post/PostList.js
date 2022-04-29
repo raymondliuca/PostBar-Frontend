@@ -125,20 +125,15 @@ export default class PostList extends Component {
         })
         return (
             <div>
-                <h1>AllPosts</h1>
-                <div>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Topic</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                            </tr>
+                <h1>Post Bar</h1>
+                <div className='bigcontainer'>
+                    <table className='table'>
+                        <tbody >
                             {allPosts}
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div className='form'>
                   {(isEdit) ? 
                   <PostEditForm key={this.state.currentPost._id} post={this.state.currentPost}
                   editPost={this.editPost}></PostEditForm> :

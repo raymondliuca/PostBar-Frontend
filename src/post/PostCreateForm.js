@@ -35,7 +35,7 @@ export default class PostCreateForm extends Component {
 
           <form onSubmit={this.handleSubmit}>
 
-              <div>
+              <div className='select'>
                 <label>Topic</label>
                 <select type="text" name="topic" onChange={this.handleChange}>
                 <option value="">Select one Topic</option>
@@ -46,12 +46,11 @@ export default class PostCreateForm extends Component {
               </div>
 
               <div>
-                  <lable>Title</lable>
-                  <input name="title" type="text" onChange={this.handleChange}></input>
+                  <lable>Title: </lable>
+                  <input className='titleinput' name="title" type="text" onChange={this.handleChange}></input>
               </div>
 
               <div>
-                  <lable>Content</lable>
                   <textarea name="content" onChange={this.handleChange}></textarea>
               </div>
 

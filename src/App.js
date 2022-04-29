@@ -90,12 +90,14 @@ export default class App extends Component {
       <div>
         <Router>
         <nav>
-            <div>
+            <div className="left-navbar">
             {isAuth ? (
-              <div>
+              <div >
                 {this.state.user ? "Welcome " + this.state.user.user.name : null} {" "}
+                
                 <Link to="/">Home</Link> {" "}
                 <Link to="/logout" onClick={this.logoutHandler}>Logout</Link>
+                  
               </div>
             ) : (
               <div>
