@@ -119,7 +119,7 @@ export default class PostList extends Component {
         const isEdit = this.state.isEdit
         const allPosts = this.state.posts.map((post, index) => {
             return <div key={index}>
-                 <Post {...post} user={this.props.user} 
+                 <Post {...post} user={this.props.user} isAuth={this.props.isAuth}
                  deletePost={this.deletePost} editView={this.editView}/>
              </div>
         })

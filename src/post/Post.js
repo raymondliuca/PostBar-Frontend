@@ -34,7 +34,7 @@ export default class Post extends Component {
                     </div>
                 </td>
                 <td>{this.props.author.firstName} {this.props.author.lastName}</td>
-                {(this.props.author._id == this.props.user.user.is) ?
+                {(this.props.isAuth && this.props.author._id == this.props.user.user.is) ?
                 <td><button onClick={() => {this.props.deletePost(this.props._id)}}>Delete</button></td>
                 : <></>
                 }
@@ -42,7 +42,8 @@ export default class Post extends Component {
               </tr>
                 <div>
                 {(onDetail) ?  
-                    <PostDetail post={this.props} user={this.props.user} editView={this.props.editView} / > :
+                    <PostDetail post={this.props} user={this.props.user} 
+                    editView={this.props.editView} isAuth={this.props.isAuth} / > :
                     <></>
                 }
                 </div>
